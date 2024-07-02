@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const inperaWhatsAppRoute = require('./inperaWhatsAppRoute');
 
-router.use('/inperaWhatsApp', inperaWhatsAppRoute);
+module.exports = app => {
+  const inperaWhatsAppRoute = require('./inperaWhatsAppRoute')(app);
 
-module.exports = router;
+  router.use('/inperaWhatsApp', inperaWhatsAppRoute);
+
+  return router;
+};

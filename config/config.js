@@ -1,9 +1,21 @@
+const path = require('path');
+require('dotenv').config({path: path.join(process.cwd(), '.env')});
+
 module.exports = {
   development: {
-    username: 'root',
-    password: '',
-    database: '',
-    host: '192.168.2.34',
+    database: 'admin_dev',
+    username: `${process.env.ADMINTESTE_USERNAME}`,
+    password: `${process.env.ADMINTESTE_PASSWORD}`,
+    options: {
+      host: 'localhost',
+      port: '5432',
+      dialect: 'postgres',
+      logging: false,
+      pool: {
+        max: 20,
+        min: 1,
+      },
+    },
   },
   // test: {
   //   username: process.env.DB_USERNAME,

@@ -4,6 +4,9 @@ const multer = require('multer');
 const { postMessage } = require('../controllers/inperaWhatsAppControler');
 const upload = multer();
 
-router.post('/', upload.single('midia'), postMessage);
+module.exports = app => {
 
-module.exports = router;
+  router.post('/', upload.single('midia'), postMessage);
+
+  return router;
+};
